@@ -10,18 +10,22 @@ You will be playing against a computer to see who gets the highest score
 after a set amount of rounds.
 '''
 # Ask for the amount of rounds the user would like to play
-rounds = int(input("How many rounds would you like to play?"))
+try:
+   rounds = int(input("How many rounds would you like to play?"))
+except ValueError:
+   print("Invalid input. Please input a number.")
+   exit()
+
+
+# Load previous save file if there is one 
 
 
 # Initialize variables
-
-
 player_dice = (0, 0, 0)
 cpu_dice = (0, 0, 0)
 player_score = 0
 cpu_score = 0
-final_score = 0
-cpu_final_score = 0
+
 # Represents the sides of the dice.
 sides = [1,2,3,4,5,6]
 
@@ -58,3 +62,7 @@ elif cpu_score > player_score:
    print(f"CPU wins with a score of {cpu_score} to {player_score}. Better luck next time!")
 else:
    print(f"It's a tie! Both scored {player_score}. Well played!")
+
+# Save scores to file
+with open("scores.txt", "w") as file:
+   file.write()
