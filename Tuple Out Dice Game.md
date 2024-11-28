@@ -12,8 +12,16 @@ Game Rules
 ------------------------------------------------------------------------------
 Objective:
     The goal is to score higher than the computer over a set number of rounds
-How to play:
-    1. At the start of your turn, type 'R' to roll your 3 dice
 
-    If all 3 dice have the same value
+How to play:
+    At the start of your turn, type 'R' to roll your 3 dice
+
+    The scores will be determined by adding the dice values.
+
+    During the players turn, they are allowed to re-roll any dice that are not "fixed" until they decide to stop
+
+    If 2 dice have the same value, they are "fixed" and cannot be re-rolled
+
+    Also if all 3 dice have the same value, you "Tuple Out" and score 0 points for the round
+
 ------------------------------------------------------------------------------
