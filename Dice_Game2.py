@@ -24,12 +24,13 @@ except ValueError:
 
 # Represents the sides of the dice.
 sides = [1,2,3,4,5,6]
-#
+# Initialize final scores
 player_total_score = 0
 cpu_total_score = 0
 
 
-
+# Main game loop
+# Will loop for set amount of rounds
 for round_num in range(1, rounds + 1):
    # Start of each round
    print(f"\n------ Round {round_num} ------")
@@ -42,6 +43,7 @@ for round_num in range(1, rounds + 1):
       dice3 = random.choice(sides)
 
       #Tuple out condition
+      # Need to add if 2 values == each other
       if dice1 == dice2 == dice3:
             player_round_score = 0
             print(f"\nYou rolled {dice1}, {dice2}, {dice3}.\nCurrent score: {player_round_score}")
@@ -55,13 +57,14 @@ for round_num in range(1, rounds + 1):
       print("U didnt type 'R' Exiting program") 
       exit()
 
-
+   #########################################################################################################
    #Cpu Turn
    cpu_dice1 = random.choice(sides)
    cpu_dice2 = random.choice(sides)
    cpu_dice3 = random.choice(sides)
 
    # Tuple out condition
+   # Need to add if 2 values == each other
    if cpu_dice1 == cpu_dice2 == cpu_dice3: 
       print(f"\nThe CPU rolled {cpu_dice1}, {cpu_dice2}, {cpu_dice3}. Tuple Out! No points this round.")
       cpu_round_score = 0

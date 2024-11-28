@@ -3,11 +3,9 @@ Tuple Out Dice Game
 Welcome to the Tuple out Dice Game!!!
 This is a simple dice-rolling game where you will compete against the computer
 to achieve the highest score.
-
-Features
 ------------------------------------------------------------------------------
 
-------------------------------------------------------------------------------
+
 Game Rules
 ------------------------------------------------------------------------------
 Objective:
@@ -25,3 +23,5 @@ How to play:
     Also if all 3 dice have the same value, you "Tuple Out" and score 0 points for the round
 
 ------------------------------------------------------------------------------
+
+Note: Game data will be saved to external file called "scores.txt"
