@@ -1,4 +1,6 @@
 
+
+
 #import necessary modules
 import random
 
@@ -19,11 +21,13 @@ except ValueError:
 
 # Load previous save file if there is one 
 # Need to work on this feature
-# with open("scores.txt", "r") as file:
 
+with open("scores.txt", "r") as file_connection:
+   file_contents = file_connection.read()
+   print("Last Game Results:\n" + file_contents)
 
 # Represents the sides of the dice.
-sides = [1,2,3,4,5,6]
+sides = (1,2,3,4,5,6)
 # Initialize final scores
 player_total_score = 0
 cpu_total_score = 0
@@ -36,27 +40,55 @@ for round_num in range(1, rounds + 1):
    print(f"\n------ Round {round_num} ------")
 
    # Player Turn
+   # make sure to implement if the player wants to reroll their dice.
    response = input("Are you ready!!!\nType 'R' to roll dice: ")
    if response.casefold() == "r":
+      
+      #First roll of the round
       dice1 = random.choice(sides)
       dice2 = random.choice(sides)
       dice3 = random.choice(sides)
-
+      print(f"\nYou rolled {dice1}, {dice2}, {dice3}.\nCurrent score: {player_round_score}")
+      
       #Tuple out condition
-      # Need to add if 2 values == each other
+      #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
       if dice1 == dice2 == dice3:
             player_round_score = 0
-            print(f"\nYou rolled {dice1}, {dice2}, {dice3}.\nCurrent score: {player_round_score}")
+            print(f"\nYou rolled {dice1}, {dice2}, {dice3}.\nSorry you 'Tupled Out'. No points this round")
+      # Conditions when 2 dice values are the same.
+      # This will 'Fix' the dice. (The fixed dice cant be rerolled)      
       else:
-         player_round_score = dice1 + dice2 + dice3
-         print(f"\nYou rolled {dice1}, {dice2}, {dice3}.\nCurrent score: {player_round_score}")
+         
+         fixed_dice = [] # List will contain 'Fixed' Dice
+         reroll = True
+         
+         if dice1 == dice2:
+            fixed_dice = [dice1, dice2]
+            print(f"\nYou rolled {dice1}, {dice2}, {dice3}.")
+            print("Two dice have become fixed. You now only have one dice to roll.")
+            reroll_response = input("Do you want to reroll the remaining die?\nType 'R' to reroll the dice or 'N' to keep it at that value: ")
+            dice3 = random.choice(sides)
+         elif dice2 == dice3:
+            fixed_dice = [dice2, dice3]
+            print(f"\nYou rolled {dice1}, {dice2}, {dice3}.")
+            print("Two dice have become fixed. You now only have one dice to roll.")
+            reroll_response = input("Do you want to reroll the remaining die?\nType 'R' to reroll the dice or 'N' to keep it at that value: ")
+            dice1 = random.choice(sides)
+         elif dice1 == dice3:
+            fixed_dice = [dice1, dice3]
+            print(f"\nYou rolled {dice1}, {dice2}, {dice3}.")
+            print("Two dice have become fixed. You now only have one dice to roll.")
+            reroll_response = input("Do you want to reroll the remaining die?\nType 'R' to reroll the dice or 'N' to keep it at that value: ")
+            dice2 = random.choice(sides)
+
+         
 
       # Add round score to total score   
       player_total_score += player_round_score   
    else: 
       print("U didnt type 'R' Exiting program") 
       exit()
-
+      #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
    #########################################################################################################
    #Cpu Turn
    cpu_dice1 = random.choice(sides)
@@ -92,6 +124,10 @@ else:
 
 # Save scores to file
 with open("scores.txt", "w") as file:
+   if player_total_score > cpu_total_score:
+      print("Congratulations! You Won The Game!!! ")
+   else:
+      print("Sorry You Lost This Game:(")
    file.write(f"Final Player Score: {player_total_score}\n")
    file.write(f"Final Opponent Score: {cpu_total_score}\n")
    file.write(f"Rounds played: {rounds}\n")
