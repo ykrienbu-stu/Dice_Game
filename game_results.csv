@@ -1,2 +1,6 @@
 Round,Player_Score,CPU_Score,Winner
-3,7,11,CPU
+1,8,14,CPU
+2,9,9,Tie
+3,7,10,CPU
+4,6,9,CPU
+5,14,8,Player

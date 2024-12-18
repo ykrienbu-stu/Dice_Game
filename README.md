@@ -22,8 +22,8 @@ How to play:
 
     Also if all 3 dice have the same value, you "Tuple Out" and score 0 points for the round.
 
-    It's important to consider the risks 
-
 ------------------------------------------------------------------------------
 
 Note: Game data will be saved to external file called "scores.txt"
+    
+    Game can also display chart of Scores per round.
