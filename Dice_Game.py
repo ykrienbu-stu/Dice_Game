@@ -1,3 +1,6 @@
+# Older Version of DiceGame
+# Made by: Young-Do Krienbuehl and Leslie for Pair Programming assignments
+
 # Beginning the tuple game program
 '''
 This program is a dice game that you play against a cpu.
